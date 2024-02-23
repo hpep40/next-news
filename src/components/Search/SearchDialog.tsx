@@ -43,7 +43,11 @@ function SearchDialogContent() {
         </Button>
       </DialogTrigger>
       <Popover>
-        <InstantSearch searchClient={algoliaClient} indexName={`articles-${lang}`}>
+        <InstantSearch
+          searchClient={algoliaClient}
+          future={{ preserveSharedStateOnUnmount: false }}
+          indexName={`articles-${lang}`}
+        >
           <DialogContent className="bottom-auto top-[10%] max-h-[80%] translate-y-[0%] overflow-auto bg-gray-100 sm:max-w-2xl">
             <DialogHeader className="border-b bg-white p-4">
               <RefinementCombobox attribute={"tags"} />

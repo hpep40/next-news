@@ -52,16 +52,18 @@ NEXT_PUBLIC_SITE_URL="my-site.app"
 # hygraph's graphql content api url - you can find it in API Acess tab on Hygraph
 NEXT_PUBLIC_HYGRAPH_CONTENT_API_URL="https://region.hygraph.com/v2/projectId/environment"
 # secret used for authenticating webhooks (generate it yourself)
-HYGRAPH_WEBOOK_SECRET="my-secret-123"
+HYGRAPH_WEBHOOK_SECRET="my-secret-123"
 ```
 
 Search engine - take it from your algolia project's config
+
 ```bash
 NEXT_PUBLIC_ALGOLIA_API_ID=""
 NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY=""
 ```
 
 Analytics - used for counting views on your articles. Needed for 'Trending Articles' section
+
 ```bash
 GA_MEASUREMENT_ID=""
 GA_PROPERTY_ID=""
@@ -80,7 +82,6 @@ yarn dev
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 
 ## 🚀 Deployment
 

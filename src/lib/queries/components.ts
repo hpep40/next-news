@@ -60,7 +60,6 @@ export const getNavigationQuery = graphql(`
 
 export const getHomepageQuery = graphql(`
   query getHomepage($locales: [Locale!]!) {
-    marketStock
     homepages(locales: $locales, first: 1) {
       heroArticle {
         id
@@ -78,6 +77,10 @@ export const getHomepageQuery = graphql(`
         title
         tags {
           tag
+          tagColor {
+            css
+            hex
+          }
         }
         image {
           description {
@@ -113,6 +116,10 @@ export const getHomepageQuery = graphql(`
         title
         tags {
           tag
+          tagColor {
+            css
+            hex
+          }
         }
         image {
           description {

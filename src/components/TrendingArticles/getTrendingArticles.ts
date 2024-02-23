@@ -8,7 +8,8 @@ import { listArticlesBySlugs } from "@/lib/client"
 import { pipe } from "@/utils/pipe"
 import { getConfig } from "./reportConfig"
 
-const credentials = JSON.parse(atob(env.GA_BASE64_SERVICE_ACCOUNT))
+const decodedCredientials = Buffer.from(env.GA_BASE64_SERVICE_ACCOUNT, "base64").toString()
+const credentials = JSON.parse(decodedCredientials)
 
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: z.object({ client_email: z.string(), private_key: z.string() }).parse(credentials),

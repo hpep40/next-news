@@ -11,7 +11,7 @@ export const validateSignature = async (req: NextRequest) => {
   const isSignatureValid = verifyWebhookSignature({
     body: parsedBody,
     signature: authHeader,
-    secret: env.HYGRAPH_WEBOOK_SECRET,
+    secret: env.HYGRAPH_WEBHOOK_SECRET,
   })
   if (!isSignatureValid) throw new HttpError("Unauthorized", 401)
 

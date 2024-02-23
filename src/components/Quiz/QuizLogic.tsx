@@ -9,6 +9,7 @@ import { getQuizQuestionsById } from "@/lib/client"
 import { cn } from "@/utils/cn"
 import { RichText } from "../RichText/RichText"
 import { Skeleton } from "../ui/Skeleton/Skeleton"
+import { Button } from "../ui/Button/Button"
 
 type ExtendedQuizAnswer = QuizAnswer & { status?: "clicked" | null }
 
@@ -101,10 +102,10 @@ export function QuizLogic({ id }: QuizProps) {
               onClick={() => handleClickQuestion(answer.id)}
               key={index}
               className={cn(
-                answer.status && answer.isValid && "bg-black",
+                answer.status && answer.isValid && "bg-green-500",
                 answer.status && !answer.isValid && "bg-custom-gray-200",
                 !answer.status && !currentQuestion.isAnswered && "cursor-pointer hover:bg-slate-50",
-                "flex items-center justify-between rounded-xl border-[1px] px-4 py-2"
+                "flex items-center justify-between rounded-md border-[1px] px-4 py-2"
               )}
             >
               <RichText raw={answer?.content?.raw} pClassName={cn(answer.status && answer.isValid && "text-white")} />
@@ -115,17 +116,23 @@ export function QuizLogic({ id }: QuizProps) {
         </ul>
       </div>
       <div className="mt-8 flex w-full justify-between">
-        <button disabled={isFirstQuestion} className="p-4 disabled:text-custom-gray-300" onClick={previousQuestion}>
+        <Button
+          disabled={isFirstQuestion}
+          variant="outline"
+          className="p-4 disabled:text-custom-gray-300"
+          onClick={previousQuestion}
+        >
           Back
-        </button>
-        <button
+        </Button>
+        <Button
           disabled={isLastQuestion}
-          className="flex items-center gap-2 rounded-xl bg-black px-4 py-1 text-white disabled:text-custom-gray-300"
+          variant="default"
+          className="flex items-center gap-2 px-4 py-1"
           onClick={nextQuestion}
         >
           Next
           <ArrowRight />
-        </button>
+        </Button>
       </div>
     </div>
   )

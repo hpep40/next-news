@@ -79,13 +79,13 @@ export async function graphqlFetch<TQuery, TVariables>({
 }
 
 export async function getHomepage(locale: Locale) {
-  const { homepages, marketStock } = await graphqlFetch({
+  const { homepages } = await graphqlFetch({
     document: getHomepageQuery,
     tags: ["HOMEPAGE", "CATEGORY", "ARTICLE"],
     variables: { locale },
     revalidate: 60 * 60 * 6, // 6h
   })
-  return { ...homepages[0], marketStock }
+  return { ...homepages[0] }
 }
 
 export async function getHomepageMetadata(locale: Locale) {

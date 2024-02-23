@@ -32,7 +32,7 @@ export function Navigation({ navigation }: NavigationProps) {
           href={url}
           hrefLang={locale}
           onClick={() => setIsSheetOpen(false)}
-          className="whitespace-nowrap rounded-xl p-2 font-semibold hover:bg-custom-dim"
+          className="whitespace-nowrap rounded-md px-4 py-2 font-semibold hover:bg-custom-dim"
         >
           {navElement?.element?.title}
         </Link>
@@ -61,9 +61,6 @@ export function Navigation({ navigation }: NavigationProps) {
         >
           {navElements}
         </ul>
-        <div>
-          <DynamicLangSelect />
-        </div>
       </div>
       <ul className="flex items-center sm:flex-wrap lg:hidden">
         <li className="flex items-center">
@@ -77,11 +74,8 @@ export function Navigation({ navigation }: NavigationProps) {
               </Button>
             </li>
           </SheetTrigger>
-          <SheetContent className="mt-20 flex min-w-[100vw] list-none flex-col items-center justify-start text-center text-2xl font-semibold">
+          <SheetContent className="mt-20 flex min-w-[100vw] list-none flex-col items-start justify-start text-center text-2xl font-semibold md:items-center">
             {navElements}
-            <li className="mt-20 w-full text-xl font-normal">
-              <DynamicLangSelect />
-            </li>
           </SheetContent>
         </Sheet>
       </ul>

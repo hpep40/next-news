@@ -1,4 +1,6 @@
+import { Montserrat, Source_Sans_3 } from "next/font/google"
 import { notFound } from "next/navigation"
+import Script from "next/script"
 import { unstable_setRequestLocale } from "next-intl/server"
 import { Footer } from "@/components/Footer/Footer"
 import { Navigation } from "@/components/Navigation/Navigation"
@@ -7,13 +9,27 @@ import { i18n, type Locale } from "@/i18n/i18n"
 import { setTranslations } from "@/i18n/setTranslations"
 import { getNavigation } from "@/lib/client"
 import "@/styles/tailwind.css"
+import { cn } from "@/utils/cn"
 import { GoogleAnalytics } from "../GoogleAnalytics"
 import Providers from "../Providers"
+
+const montserrat = Montserrat({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+})
+const sourceSansPro = Source_Sans_3({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  variable: "--font-source-sans-pro",
+})
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }) {
   const locale = params.lang ?? i18n.defaultLocale
   return {
-    title: "Blazity-Hygraph news starter",
+    metadataBase: new URL("https://www.bobzar.com"),
+    title: "BobZar",
     openGraph: {
       url: env.NEXT_PUBLIC_SITE_URL,
       images: [
@@ -44,10 +60,18 @@ export default async function Layout({ children, params }: { children: React.Rea
   const { navigation, footer } = await getNavigation(locale)
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={cn(montserrat.variable, sourceSansPro.variable)}>
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6120553951071328"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
+      </head>
       <GoogleAnalytics />
       <Providers translations={translations} locale={locale}>
-        <body className="flex min-h-screen flex-col items-center">
+        <body className="flex min-h-screen flex-col items-center font-source-sans-pro antialiased">
           <div className="z-50 flex w-full justify-center border-b bg-white">
             <nav className="flex w-full max-w-[1200px] items-center justify-end gap-4 py-4 ">
               <Navigation navigation={navigation} />

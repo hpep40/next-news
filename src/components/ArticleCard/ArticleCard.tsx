@@ -14,7 +14,7 @@ type ArticleCardProps = {
     imageUrl?: string
     title: string
     publicationDate: string | null
-    tags: string[]
+    tags: { tag: string; tagColor?: { css: string; hex: any } | null }[]
     slug: string
     content?: { raw: RichTextContent } | null
     author: {
@@ -30,7 +30,7 @@ type ArticleCardProps = {
 }
 
 export const hygraphArticleToCardProps = (article: {
-  tags: { tag: string }[]
+  tags: { tag: string; tagColor?: { css: string; hex: any } | null }[]
   title: string
   author?: { name: string; avatar?: { data: { url: string } } | undefined | null } | null
   image?: { data: { url: string }; description?: { text: string } | undefined | null } | null
@@ -39,7 +39,7 @@ export const hygraphArticleToCardProps = (article: {
   slug: string
 }) => {
   return {
-    tags: article?.tags?.map(({ tag }) => tag),
+    tags: article?.tags?.map(({ tag, tagColor }) => ({ tag: tag, tagColor: tagColor })),
     imageUrl: article?.image?.data?.url,
     imageAlt: article.image?.description?.text,
     title: article?.title,
@@ -68,7 +68,7 @@ export function ArticleCard({
         className={cn(
           orientation === "vertical" && "flex-row md:flex-col",
           orientation === "horizontal" && "flex-row",
-          "flex h-full w-full cursor-pointer gap-5 overflow-hidden rounded-xl md:max-h-[490px] md:gap-0",
+          "flex h-full w-full cursor-pointer gap-5 overflow-hidden rounded-md md:max-h-[490px] md:gap-0",
           isMain && "max-h-[490px] flex-col gap-0"
         )}
       >
@@ -89,7 +89,7 @@ export function ArticleCard({
               quality={100}
               sizes="(max-width: 220px) 82px, 480px, (max-width: 640px) 480px, 780px, (max-width: 1024px) 780px, 1020px"
               className={cn(
-                "h-[82px] min-h-[82px] w-full rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 object-cover text-center brightness-90 md:h-[264px] md:min-h-[264px] md:rounded-none",
+                "h-[82px] min-h-[82px] w-full rounded-md bg-gradient-to-br from-gray-200 to-gray-300 object-cover text-center brightness-90 md:h-[264px] md:min-h-[264px] md:rounded-none",
                 isMain && "h-[264px] min-h-[264px] rounded-none"
               )}
             />
@@ -103,7 +103,7 @@ export function ArticleCard({
             <div className="flex w-full flex-wrap justify-between">
               {tagsPosition === "over" && (
                 <div className="flex gap-2">
-                  {tags?.slice(0, MAX_TAGS_TO_DISPLAY).map((tag) => {
+                  {tags?.slice(0, MAX_TAGS_TO_DISPLAY).map(({ tag, tagColor }) => {
                     return <Tag key={tag}>{tag}</Tag>
                   })}
                 </div>
@@ -114,16 +114,16 @@ export function ArticleCard({
         <div
           className={cn(
             "flex flex-1 flex-col  border-gray-200 bg-white md:border",
-            orientation === "vertical" && "rounded-b-xl border-t-0",
-            orientation === "horizontal" && "rounded-r-xl border-l-0",
+            orientation === "vertical" && "rounded-b-md border-t-0",
+            orientation === "horizontal" && "rounded-r-md border-l-0",
             isMain && "border"
           )}
         >
           {tagsPosition === "under" && tags?.length > 0 && (
-            <div className={cn("hidden gap-2 p-5 pb-2 md:flex", isMain && "flex")}>
+            <div className={cn("hidden gap-2 p-5 pb-0 md:flex", isMain && "flex")}>
               {mainTag && (
-                <Tag key={mainTag} variant="light">
-                  {mainTag}
+                <Tag color={mainTag.tagColor?.css} key={mainTag.tag} variant="transparent">
+                  {mainTag.tag}
                 </Tag>
               )}
               {tags?.length > 1 && (
@@ -140,8 +140,9 @@ export function ArticleCard({
           )}
           <div
             className={cn(
-              "flex flex-1 items-start gap-5 pt-0 md:flex-col md:justify-between md:gap-2 md:p-3 md:pt-2 lg:p-4",
-              isMain && "flex-col justify-between p-5 pt-2"
+              "flex flex-1 items-start gap-5 pt-0 md:flex-col md:justify-between md:gap-2 md:p-3 md:pt-2 lg:p-4 lg:pt-0",
+              isMain && "flex-col justify-between p-5 pt-2",
+              !mainTag && "lg:pt-4"
             )}
           >
             <h2
@@ -150,7 +151,7 @@ export function ArticleCard({
                 lines === "1" && "md:line-clamp-1",
                 lines === "2" && "md:line-clamp-2",
                 lines === "3" && "md:line-clamp-3",
-                "line-clamp-3 text-lg font-bold tracking-[1px] md:text-[1.5rem] md:leading-9 xl:py-2"
+                "line-clamp-3 font-montserrat text-lg font-semibold md:text-[1.5rem] md:font-bold md:leading-9 xl:py-2"
               )}
             >
               {title}

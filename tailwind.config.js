@@ -23,6 +23,8 @@ module.exports = {
         wiggle: "wiggle 5s ease-in-out infinite",
       },
       colors: {
+        "muted": "hsl(240 4.8% 95.9%)",
+        "muted-foreground": "hsl(240 3.8% 46.1%)",
         primary: {
           50: "#eff6ff",
           100: "#dbeafe",
@@ -48,6 +50,8 @@ module.exports = {
         },
       },
       fontFamily: {
+        montserrat: "var(--font-montserrat)",
+        "source-sans-pro": "var(--font-source-sans-pro)",
         body: [
           "Inter",
           "ui-sans-serif",

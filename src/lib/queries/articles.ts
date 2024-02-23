@@ -173,6 +173,10 @@ export const getArticleBySlugQuery = graphql(`
       publishedAt
       tags {
         tag
+        tagColor {
+          hex
+          css
+        }
       }
       image(forceParentLocale: true) {
         id

@@ -10,7 +10,7 @@ type HeroArticleCardProps = {
     imageUrl?: string
     title: string
     publicationDate: string | null
-    tags: string[]
+    tags: { tag: string; tagColor?: { css: string; hex: any } | null }[]
     author: {
       name: string
       imageUrl?: string
@@ -29,7 +29,7 @@ export function HeroArticleCard({
   const locale = useLocale()
 
   return (
-    <div className="relative w-full overflow-hidden rounded-xl text-white">
+    <div className="relative w-full overflow-hidden rounded-md text-white">
       <div className="relative h-[320px] bg-slate-900">
         {imageUrl && (
           <Image
@@ -39,7 +39,7 @@ export function HeroArticleCard({
             height={320}
             quality={100}
             sizes="(max-width: 640px) 480px, (max-width: 1024px) 780px, (max-width: 1200px) 780px, 1200px"
-            className="h-full max-h-[320px] object-cover text-center brightness-[70%]"
+            className="h-full max-h-[320px] object-cover text-center brightness-[80%]"
             priority
           />
         )}
@@ -54,23 +54,19 @@ export function HeroArticleCard({
           )}
           <div className="flex w-full justify-between">
             <div className="flex flex-wrap gap-2">
-              {tags.map((tag) => {
+              {tags.map(({ tag }) => {
                 return <Tag key={tag}>{tag}</Tag>
               })}
             </div>
           </div>
-          <div className="flex flex-col justify-around gap-3 md:gap-5">
-            <h2
-              className=" text-[1.8rem] font-bold leading-7 tracking-[1px] md:leading-10"
-              style={{ textShadow: "0px 1px 4px rgba(26, 26, 27, 1)" }}
-            >
-              {title}
-            </h2>
+          <div className="flex flex-col justify-around gap-2 md:gap-1">
+            <h2 className=" font-montserrat text-[1.8rem] font-bold leading-7 tracking-[1px] md:leading-10">{title}</h2>
             <ArticlePublishDetails
               link={additionalLink}
               imageUrl={author.imageUrl}
               author={author.name}
               publicationDate={publicationDate}
+              variant="dark"
             />
           </div>
         </div>

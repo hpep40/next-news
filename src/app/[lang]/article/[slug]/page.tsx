@@ -1,13 +1,15 @@
-import { HeroArticleCard } from "@/components/ArticleCard/HeroArticleCard"
+import { notFound } from "next/navigation"
+import { Metadata } from "next/types"
+
+import { PageArticleCard } from "@/components/ArticleCard/PageArticleCard"
 import { RecommendedArticles } from "@/components/RecommendedArticles/RecommendedArticles"
 import { RichText } from "@/components/RichText/RichText"
-import { ShareOnSocial } from "@/components/ShareOnSocial/ShareOnSocial"
+import { SubscribeNewsletter } from "@/components/SubscribeNewsletter/SubscribeNewsletter"
+
 import { env } from "@/env.mjs"
 import { Locale } from "@/i18n/i18n"
 import { getArticleBySlug, getArticleMetadataBySlug } from "@/lib/client"
 import { getMatadataObj } from "@/utils/getMetadataObj"
-import { notFound } from "next/navigation"
-import { Metadata } from "next/types"
 
 type ArticlePageProps = { params: { slug: string; lang: Locale } }
 
@@ -32,30 +34,37 @@ export default async function Web({ params: { slug, lang } }: ArticlePageProps) 
   const { image, publishedAt, title, tags, author } = article
   return (
     <>
-      <article className="w-full pb-16 pt-8">
-        <HeroArticleCard
-          article={{
-            imageAlt: image?.description?.text,
-            imageUrl: image?.data?.url,
-            publicationDate: publishedAt,
-            title,
-            author: { name: author?.name ?? "Anonymous", imageUrl: author?.avatar?.data?.url },
-            tags: tags.map(({ tag }) => tag),
-            slug,
-          }}
-          asLink={false}
-        />
-        <ShareOnSocial articleUrl={articleUrl} articleTitle={title} />
-        {article.content && (
-          <section className="flex w-full flex-col pt-8">
-            <RichText references={initialQuiz ? [initialQuiz] : []} raw={article.content.raw} />
-          </section>
-        )}
+      <article className="flex w-full flex-col gap-4 pb-16 pt-8 md:flex-row">
+        <div className="flex w-full flex-col">
+          <PageArticleCard
+            article={{
+              imageAlt: image?.description?.text,
+              imageUrl: image?.data?.url,
+              publicationDate: publishedAt,
+              title,
+              author: { name: author?.name ?? "Anonymous", imageUrl: author?.avatar?.data?.url },
+              tags: tags.map(({ tag, tagColor }) => ({
+                tag: tag,
+                tagColor: { hex: tagColor?.hex, css: tagColor?.css },
+              })),
+              slug,
+            }}
+            articleUrl={articleUrl}
+            articleTitle={title}
+            asLink={false}
+          />
+
+          {article.content && (
+            <section className="flex w-full flex-col">
+              <RichText references={initialQuiz ? [initialQuiz] : []} raw={article.content.raw} />
+            </section>
+          )}
+        </div>
+        <div className="hidden h-fit w-full max-w-[168px] flex-col gap-4 md:flex md:max-w-[368px]">
+          <SubscribeNewsletter />
+          <RecommendedArticles id={article.id} />
+        </div>
       </article>
-      <div className="mb-5 border-t py-5">
-        <ShareOnSocial articleUrl={articleUrl} articleTitle={title} />
-      </div>
-      <RecommendedArticles id={article.id} />
     </>
   )
 }

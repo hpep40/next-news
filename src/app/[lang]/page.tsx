@@ -4,8 +4,6 @@ import { hygraphArticleToCardProps } from "@/components/ArticleCard/ArticleCard"
 import { HeroArticleCard } from "@/components/ArticleCard/HeroArticleCard"
 import { HighlightedArticles } from "@/components/HighlightedArticles/HighlightedArticles"
 import { HighlightedCategoryArticles } from "@/components/HighlightedCategoryArticles/HighlightedCategoryArticles"
-import { RecentArticles } from "@/components/RecentArticles/RecentArticles"
-import { StockDisplay } from "@/components/StockDisplay/StockDisplay"
 import { TrendingArticles } from "@/components/TrendingArticles/TrendingArticles"
 import { i18n, Locale } from "@/i18n/i18n"
 import { setTranslations } from "@/i18n/setTranslations"
@@ -30,14 +28,11 @@ export default async function Web({ params }: { params: { lang: Locale } }) {
 
   return (
     <>
-      {homepage.marketStock?.data && <StockDisplay quotes={homepage.marketStock?.data} />}
-
       {homepage.heroArticle && (
-        <HeroArticleCard
-          article={hygraphArticleToCardProps(homepage.heroArticle)}
-          asLink
-          additionalLink="https://blazity.com/"
-        />
+        <>
+          <div className="mt-8"></div>
+          <HeroArticleCard article={hygraphArticleToCardProps(homepage.heroArticle)} asLink />
+        </>
       )}
       <TrendingArticles title={homepage.trendingSectionTitle ?? "Trending articles"} />
       {homepage.highlightedArticles && (
@@ -52,7 +47,6 @@ export default async function Web({ params }: { params: { lang: Locale } }) {
           categoryId={homepage.highlightedCategory.id}
         />
       )}
-      <RecentArticles title={homepage.recentSectionTitle ?? "Recent articles"} />
     </>
   )
 }

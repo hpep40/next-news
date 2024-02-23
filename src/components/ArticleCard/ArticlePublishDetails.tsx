@@ -25,19 +25,18 @@ export function ArticlePublishDetails({
   return (
     <div
       className={cn(
-        variant === "dark" && " text-custom-dim",
+        variant === "dark" && " text-white",
         variant === "light" && " text-gray-500",
-        "flex flex-wrap items-center gap-1 whitespace-nowrap text-center text-sm md:gap-2",
+        "flex flex-row-reverse flex-wrap items-center gap-1 self-start whitespace-nowrap text-center text-sm md:gap-2",
         className
       )}
-      style={{ textShadow: variant === "dark" ? "0px 1px 2px rgba(26, 26, 27, 1)" : undefined }}
     >
       {publicationDate && (
         <>
           {link && (
             <>
               <Link hrefLang={locale} className="z-[22] text-[#FF782C] underline" target="_blank" href={link}>
-                blazity.com
+                {link.toString()}
               </Link>
               <p>|</p>
             </>
@@ -54,7 +53,7 @@ export function ArticlePublishDetails({
             alt="author"
             width={24}
             height={24}
-            className="h-[24px] w-[24px] rounded-full border object-cover"
+            className="size-[24px] rounded-full border object-cover"
           />
         )}
       </div>

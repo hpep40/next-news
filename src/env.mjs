@@ -7,7 +7,7 @@ export const env = createEnv({
       .enum(["true", "false"])
       .optional()
       .transform((value) => value === "true"),
-    HYGRAPH_WEBOOK_SECRET: z.string(),
+    HYGRAPH_WEBHOOK_SECRET: z.string(),
     GA_MEASUREMENT_ID: z.string(),
     GA_PROPERTY_ID: z.string(),
     GA_BASE64_SERVICE_ACCOUNT: z.string(),
@@ -20,7 +20,7 @@ export const env = createEnv({
   },
   runtimeEnv: {
     ANALYZE: process.env.ANALYZE,
-    HYGRAPH_WEBOOK_SECRET: process.env.HYGRAPH_WEBOOK_SECRET,
+    HYGRAPH_WEBHOOK_SECRET: process.env.HYGRAPH_WEBHOOK_SECRET,
     GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID,
     GA_PROPERTY_ID: process.env.GA_PROPERTY_ID,
     GA_BASE64_SERVICE_ACCOUNT: process.env.GA_BASE64_SERVICE_ACCOUNT,

@@ -18,9 +18,9 @@ export function RecommendedArticles({ id }: RecommendedArticlesProps) {
 
   if (!isLoading && recommendedArticles?.length === 0) return null
   return (
-    <section className="w-full py-4">
-      <h2 className="mb-8 text-2xl font-bold">{translations.relatedArticles}</h2>
-      <div className={`grid gap-8 md:grid-cols-3`}>
+    <section className="w-full">
+      <h2 className="mb-4 scroll-m-20 text-3xl font-semibold tracking-tight">{translations.relatedArticles}</h2>
+      <div className={`grid gap-4 md:grid-cols-1`}>
         {isLoading &&
           Array.from(Array(3).keys()).map((idx) => {
             return <ArticleSkeleton key={`skeleton-${idx}`} />
