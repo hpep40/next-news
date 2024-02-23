@@ -83,7 +83,7 @@ export async function getHomepage(locale: Locale) {
     document: getHomepageQuery,
     tags: ["HOMEPAGE", "CATEGORY", "ARTICLE"],
     variables: { locale },
-    revalidate: 60 * 60 * 6, // 6h
+    revalidate: 30, // 6h
   })
   return { ...homepages[0] }
 }
