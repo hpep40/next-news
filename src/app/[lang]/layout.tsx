@@ -28,7 +28,7 @@ const sourceSansPro = Source_Sans_3({
 export async function generateMetadata({ params }: { params: { lang: Locale } }) {
   const locale = params.lang ?? i18n.defaultLocale
   return {
-    metadataBase: new URL("https://bobzar.com"),
+    metadataBase: new URL("https://www.bobzar.com"),
     title: "BobZar",
     openGraph: {
       url: env.NEXT_PUBLIC_SITE_URL,
