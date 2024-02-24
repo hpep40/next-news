@@ -8,12 +8,12 @@ const intlMiddleware = createMiddleware({
   localePrefix: "always",
 })
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   if (request.nextUrl.hostname === "bobzar.com") {
     return NextResponse.redirect(`https://www.${request.nextUrl.hostname}${request.nextUrl.pathname}`)
   }
 
-  return intlMiddleware
+  return intlMiddleware(request)
 }
 
 export const config = {
