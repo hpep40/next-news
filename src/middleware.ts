@@ -9,8 +9,15 @@ const intlMiddleware = createMiddleware({
 })
 
 export default async function middleware(request: NextRequest) {
-  if (request.nextUrl.hostname === "bobzar.com") {
-    return NextResponse.redirect(`https://www.${request.nextUrl.hostname}${request.nextUrl.pathname}`)
+  const url = request.nextUrl.clone()
+  console.log(url)
+
+  if (url.hostname === "bobzar.com") {
+    url.hostname = "www.bobzar.com"
+    url.port = ""
+    return NextResponse.redirect(url, {
+      status: 301,
+    })
   }
 
   return intlMiddleware(request)
