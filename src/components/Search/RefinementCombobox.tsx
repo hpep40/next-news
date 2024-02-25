@@ -20,7 +20,7 @@ export function RefinementCombobox(props: RefinementComboboxProps) {
 
   return (
     <Popover open={open} onOpenChange={(open) => setOpen(open)}>
-      <div className="flex flex-wrap items-start gap-4 pb-4">
+      <div className="flex flex-wrap items-start gap-2">
         <PopoverTrigger asChild>
           <Button
             variant="outline"
@@ -29,7 +29,7 @@ export function RefinementCombobox(props: RefinementComboboxProps) {
             className="w-[150px] justify-between bg-gray-100 text-gray-400"
           >
             {translations.selectTag}
-            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
         {items
@@ -41,8 +41,12 @@ export function RefinementCombobox(props: RefinementComboboxProps) {
                 className="flex h-[40px] items-center gap-2 rounded-lg bg-gray-100 px-4 pr-2 text-sm text-black"
               >
                 {item.label}
-                <Button className="h-[20px] w-[20px] rounded-full p-1 " onClick={() => refine(item.value)}>
-                  <X className="h-5 w-5" />
+                <Button
+                  variant="ghost"
+                  className="h-[20px] w-[20px] rounded-full p-1"
+                  onClick={() => refine(item.value)}
+                >
+                  <X className="size-5" />
                 </Button>
               </div>
             )
@@ -67,7 +71,7 @@ export function RefinementCombobox(props: RefinementComboboxProps) {
                   >
                     <Check className={cn("mr-2 h-4 w-4", item.isRefined ? "opacity-100" : "opacity-0")} />
                     {item.label}
-                    <div className="absolute right-2 min-w-[20px] rounded-full  text-center font-semibold ">
+                    <div className="absolute right-2 min-w-[20px] rounded-md text-center font-semibold ">
                       {item.count}
                     </div>
                   </CommandItem>

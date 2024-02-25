@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
-import { ImageResponse, NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
+import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 
