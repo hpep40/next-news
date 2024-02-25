@@ -35,7 +35,7 @@ function SearchDialogContent() {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className="rounded-xl p-4 font-semibold hover:bg-custom-dim"
+          className="rounded-md p-4 font-semibold hover:bg-custom-dim"
           variant="ghost"
           aria-label="Open search dialog"
           name="Search"

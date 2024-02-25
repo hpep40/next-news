@@ -122,7 +122,7 @@ export function ArticleCard({
           {tagsPosition === "under" && tags?.length > 0 && (
             <div className={cn("hidden gap-2 p-5 pb-0 md:flex", isMain && "flex")}>
               {mainTag && (
-                <Tag color={mainTag.tagColor?.css} key={mainTag.tag} variant="transparent">
+                <Tag color={mainTag.tagColor?.hex} key={mainTag.tag} variant="dark">
                   {mainTag.tag}
                 </Tag>
               )}
@@ -132,7 +132,10 @@ export function ArticleCard({
                     <Tag variant="light">{`+${tags.length - 1}`}</Tag>
                   </TooltipTrigger>
                   <TooltipContent className="flex gap-2 bg-white" side="bottom">
-                    {tags.slice(1).join(", ")}
+                    {tags
+                      .slice(1)
+                      .map((tag) => tag.tag)
+                      .join(", ")}
                   </TooltipContent>
                 </Tooltip>
               )}
