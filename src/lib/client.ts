@@ -30,7 +30,7 @@ export async function graphqlFetch<TQuery, TVariables>({
   headers,
   document,
   variables,
-  revalidate,
+  revalidate = 30, // Revalidate after 30 seconds.
   tags,
 }: {
   cache?: RequestCache

@@ -30,13 +30,7 @@ const isArticle = (data: UnpublishWebhookBody["data"]): data is z.infer<typeof a
 
 export async function POST(req: NextRequest) {
   try {
-    return await pipe(
-      req,
-      validateSignature,
-      validateBody(bodySchema),
-      handleRevalidation,
-      handleAlgoliaUnpublishWebhook
-    )
+    return await pipe(req, validateSignature, validateBody(bodySchema), handleAlgoliaUnpublishWebhook)
   } catch (error) {
     return errorToNextResponse(error)
   }

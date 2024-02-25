@@ -40,7 +40,7 @@ async function handleAlgoliaPublishWebhook(req: NextRequestWithValidBody<Publish
 
 export async function POST(req: NextRequest) {
   try {
-    return await pipe(req, validateSignature, validateBody(bodySchema), handleRevalidation, handleAlgoliaPublishWebhook)
+    return await pipe(req, validateSignature, validateBody(bodySchema), handleAlgoliaPublishWebhook)
   } catch (error) {
     return errorToNextResponse(error)
   }
