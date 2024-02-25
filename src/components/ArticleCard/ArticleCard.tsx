@@ -96,7 +96,7 @@ export function ArticleCard({
           )}
           <div
             className={cn(
-              "absolute inset-0 z-20 hidden w-full flex-col items-start justify-end  p-6 md:flex",
+              "absolute inset-0 z-20 hidden w-full flex-col items-start justify-end md:flex",
               isMain && "flex"
             )}
           >
@@ -122,7 +122,7 @@ export function ArticleCard({
           {tagsPosition === "under" && tags?.length > 0 && (
             <div className={cn("hidden gap-2 p-5 pb-0 md:flex", isMain && "flex")}>
               {mainTag && (
-                <Tag color={mainTag.tagColor?.hex} key={mainTag.tag} variant="dark">
+                <Tag color={mainTag.tagColor?.hex} key={mainTag.tag} variant="transparent">
                   {mainTag.tag}
                 </Tag>
               )}

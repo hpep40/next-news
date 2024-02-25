@@ -30,7 +30,7 @@ export function HeroArticleCard({
 
   return (
     <div className="relative w-full overflow-hidden rounded-md text-white">
-      <div className="relative h-[320px] bg-slate-900">
+      <div className="relative h-[224px] rounded-md bg-slate-900 md:h-[440px]">
         {imageUrl && (
           <Image
             src={imageUrl}
@@ -39,7 +39,7 @@ export function HeroArticleCard({
             height={320}
             quality={100}
             sizes="(max-width: 640px) 480px, (max-width: 1024px) 780px, (max-width: 1200px) 780px, 1200px"
-            className="h-full max-h-[320px] object-cover text-center brightness-[80%]"
+            className="h-full max-h-[440px] rounded-md object-cover text-center brightness-[80%]"
             priority
           />
         )}
@@ -52,13 +52,7 @@ export function HeroArticleCard({
               hrefLang={locale}
             />
           )}
-          <div className="flex w-full justify-between">
-            <div className="flex flex-wrap gap-2">
-              {tags.map(({ tag }) => {
-                return <Tag key={tag}>{tag}</Tag>
-              })}
-            </div>
-          </div>
+          <div className="flex w-full justify-between"></div>
           <div className="flex flex-col justify-around gap-2 md:gap-1">
             <h2 className=" font-montserrat text-[1.8rem] font-bold leading-7 tracking-[1px] md:leading-10">{title}</h2>
             <ArticlePublishDetails

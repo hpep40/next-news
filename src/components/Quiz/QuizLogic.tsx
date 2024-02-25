@@ -8,8 +8,8 @@ import { useLocale } from "@/i18n/i18n"
 import { getQuizQuestionsById } from "@/lib/client"
 import { cn } from "@/utils/cn"
 import { RichText } from "../RichText/RichText"
-import { Skeleton } from "../ui/Skeleton/Skeleton"
 import { Button } from "../ui/Button/Button"
+import { Skeleton } from "../ui/Skeleton/Skeleton"
 
 type ExtendedQuizAnswer = QuizAnswer & { status?: "clicked" | null }
 
@@ -91,7 +91,12 @@ export function QuizLogic({ id }: QuizProps) {
     <div className="w-full flex-col items-center justify-center rounded-xl border-[1px] p-5">
       <div className="w-full items-center justify-center">
         <div className="mx-1 flex items-center justify-between pb-8">
-          {currentQuestion?.content?.raw && <RichText raw={currentQuestion?.content?.raw} />}
+          {currentQuestion?.content?.raw && (
+            <RichText
+              pClassName="mb-0 font-montserrat font-semibold text-lg max-w-[700px]"
+              raw={currentQuestion?.content?.raw}
+            />
+          )}
           <p className="font-semibold text-custom-gray-300">
             {currentQuestionIndex + 1}/{data?.length}
           </p>
@@ -108,7 +113,13 @@ export function QuizLogic({ id }: QuizProps) {
                 "flex items-center justify-between rounded-md border-[1px] px-4 py-2"
               )}
             >
-              <RichText raw={answer?.content?.raw} pClassName={cn(answer.status && answer.isValid && "text-white")} />
+              <RichText
+                raw={answer?.content?.raw}
+                pClassName={cn(
+                  answer.status && answer.isValid && "text-white",
+                  "mb-0 font-source-sans-pro p-4 max-w-[700px]"
+                )}
+              />
               {answer.status && answer.isValid && <Check stroke="white" />}
               {answer.status && !answer.isValid && <XCircle stroke="#D9D9D9" />}
             </li>
@@ -131,7 +142,7 @@ export function QuizLogic({ id }: QuizProps) {
           onClick={nextQuestion}
         >
           Next
-          <ArrowRight />
+          <ArrowRight className="size-[16px]" />
         </Button>
       </div>
     </div>

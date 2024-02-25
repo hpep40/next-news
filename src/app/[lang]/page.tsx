@@ -28,13 +28,14 @@ export default async function Web({ params }: { params: { lang: Locale } }) {
 
   return (
     <>
-      {homepage.heroArticle && (
-        <>
-          <div className="mt-8"></div>
-          <HeroArticleCard article={hygraphArticleToCardProps(homepage.heroArticle)} asLink />
-        </>
-      )}
-      <TrendingArticles title={homepage.trendingSectionTitle ?? "Trending articles"} />
+      <div className="mt-8 flex max-h-[500px] flex-col gap-[20px] border-b lg:flex-row">
+        {homepage.heroArticle && (
+          <>
+            <HeroArticleCard article={hygraphArticleToCardProps(homepage.heroArticle)} asLink />
+          </>
+        )}
+        <TrendingArticles title={homepage.trendingSectionTitle ?? "Trending articles"} />
+      </div>
       {homepage.highlightedArticles && (
         <HighlightedArticles
           title={homepage.highlightedSectionTitle ?? "Our picks"}
