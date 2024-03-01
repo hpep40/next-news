@@ -31,7 +31,7 @@ export function ArticleMinifiedCard({
             <Image
               src={imageUrl}
               alt={imageAlt ?? "lack of description"}
-              layout="fill"
+              fill
               className=" min-h-[100px] rounded-md object-cover text-center brightness-90"
             />
           )}

@@ -89,10 +89,10 @@ export function RecentArticleCard({
             <Image
               src={imageUrl}
               alt={imageAlt ?? "lack of description"}
-              layout="fill"
+              fill
               sizes="(max-width: 220px) 200px, 480px, (max-width: 640px) 480px, 780px, (max-width: 1024px) 780px, 1020px"
               className={cn(
-                "h-[200px] min-h-[100px] w-full rounded-md bg-gradient-to-br from-gray-200 to-gray-300 object-cover text-center brightness-90 md:h-[264px] md:min-h-[264px] md:rounded-none",
+                "h-[200px] min-h-[100px] w-full rounded-md bg-gradient-to-br from-gray-200 to-gray-300 object-cover text-center brightness-90 md:h-[264px] md:min-h-[264px]",
                 isMain && "h-[264px] min-h-[264px] rounded-none"
               )}
             />
@@ -118,7 +118,7 @@ export function RecentArticleCard({
                 lines === "1" && "md:line-clamp-1",
                 lines === "2" && "md:line-clamp-2",
                 lines === "3" && "md:line-clamp-3",
-                "mb-2 line-clamp-3 h-fit min-h-[40px] font-montserrat text-lg font-semibold md:text-[1.5rem] md:font-bold md:leading-9 xl:py-2"
+                "mb-2 line-clamp-3 h-fit min-h-[40px] font-montserrat text-lg font-semibold md:font-bold md:leading-9 xl:py-2"
               )}
             >
               {title}
