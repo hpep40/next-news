@@ -30,7 +30,7 @@ export async function graphqlFetch<TQuery, TVariables>({
   headers,
   document,
   variables,
-  revalidate = 30, // Revalidate after 30 seconds.
+  revalidate = 300, // Revalidate after 5 minutes.
   tags,
 }: {
   cache?: RequestCache
@@ -83,7 +83,7 @@ export async function getHomepage(locale: Locale) {
     document: getHomepageQuery,
     tags: ["HOMEPAGE", "CATEGORY", "ARTICLE"],
     variables: { locale },
-    revalidate: 30, // 6h
+    revalidate: 360, // 6 minutes
   })
   return { ...homepages[0] }
 }

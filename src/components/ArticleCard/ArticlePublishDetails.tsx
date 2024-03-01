@@ -60,3 +60,57 @@ export function ArticlePublishDetails({
     </div>
   )
 }
+
+export function RecentArticlePublishDetails({
+  author,
+  publicationDate,
+  imageUrl,
+  link,
+  variant = "dark",
+  className = "",
+}: ArticlePublishDetailsProps) {
+  const locale = useLocale()
+  const parsedDate = new Date(publicationDate ?? "").toLocaleDateString(locale, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+
+  return (
+    <div
+      className={cn(
+        variant === "dark" && " text-white",
+        variant === "light" && " text-gray-500",
+        "flex w-full flex-col flex-wrap items-center gap-1 self-start whitespace-nowrap text-center text-sm md:flex-row-reverse md:gap-2",
+        className
+      )}
+    >
+      {publicationDate && (
+        <>
+          {link && (
+            <>
+              <Link hrefLang={locale} className="z-[22] text-[#FF782C] underline" target="_blank" href={link}>
+                {link.toString()}
+              </Link>
+              <p>|</p>
+            </>
+          )}
+          <p>{parsedDate}</p>
+          <p className="hidden md:inline">|</p>
+        </>
+      )}
+      <div className="mt-1 flex items-center gap-2 md:mt-0">
+        <p>{author}</p>
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt="author"
+            width={24}
+            height={24}
+            className="size-[24px] rounded-full border object-cover"
+          />
+        )}
+      </div>
+    </div>
+  )
+}

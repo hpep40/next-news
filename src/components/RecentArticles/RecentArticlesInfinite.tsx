@@ -8,6 +8,7 @@ import { useTranslations } from "@/i18n/useTranslations"
 import { getRecentArticles } from "@/lib/client"
 import { RECENT_ARTICLES_PER_PAGE } from "./RecentArticles"
 import { ArticleCard, hygraphArticleToCardProps } from "../ArticleCard/ArticleCard"
+import { RecentArticleCard } from "./RecentArticleCard"
 
 export type RecentArticlesInfiniteProps = {
   initialArticles: { articles: GetRecentArticlesQuery["articles"]; count: number }
@@ -46,13 +47,19 @@ export function RecentArticlesInfinite({ initialArticles }: RecentArticlesInfini
 
   return (
     <section className="flex flex-col gap-5">
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
         {otherArticles.map((article) => {
-          return <ArticleCard key={`recent-${article.id}`} article={hygraphArticleToCardProps(article)} />
+          return (
+            <RecentArticleCard
+              orientation="vertical"
+              key={`recent-${article.id}`}
+              article={hygraphArticleToCardProps(article)}
+            />
+          )
         })}
       </div>
       {hasNextPage && (
-        <Button className="w-full rounded-xl border p-4" disabled={isFetchingNextPage} onClick={() => fetchNextPage()}>
+        <Button className="w-full rounded-md border p-4" disabled={isFetchingNextPage} onClick={() => fetchNextPage()}>
           {translations.showMore}
         </Button>
       )}

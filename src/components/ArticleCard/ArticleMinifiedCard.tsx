@@ -26,7 +26,7 @@ export function ArticleMinifiedCard({
   return (
     <Link href={`/${locale}/article/${slug}`} hrefLang={locale}>
       <article className="flex w-full gap-5">
-        <div className="relative aspect-video h-[100px] min-w-[170px] max-w-[170px] rounded-xl bg-gradient-to-br from-gray-200 to-gray-300">
+        <div className="relative aspect-video h-[100px] min-w-[170px] max-w-[170px] rounded-md bg-gradient-to-br from-gray-200 to-gray-300">
           {imageUrl && (
             <Image
               src={imageUrl}

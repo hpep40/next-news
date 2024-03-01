@@ -52,10 +52,10 @@ function SearchDialogContent() {
           <DialogContent className="bottom-auto top-[10%] max-h-[80%] translate-y-[0%] overflow-auto bg-gray-100 sm:max-w-2xl">
             <DialogHeader className="flex flex-col gap-2 border-b bg-white p-4">
               <div className="flex w-full items-center justify-between">
-                <RefinementCombobox attribute={"tags"} />
-                <PoweredBy className="h-fit w-36" />
+                {/* <RefinementCombobox attribute={"tags"} /> */}
               </div>
               <DebouncedSearchBox />
+              <PoweredBy className="h-fit w-36 self-center" />
             </DialogHeader>
 
             <Configure attributesToSnippet={["content:20"]} />
@@ -88,7 +88,7 @@ function CustomHit({ hit, lang }: { hit: ArticleHit; lang: Locale }) {
       className="mb-5 inline-flex w-full rounded-md border-[1px] bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
     >
       <article className="flex cursor-pointer flex-col gap-2 rounded-md p-7">
-        {hit.tags.length > 0 && (
+        {/* {hit.tags.length > 0 && (
           <div className="flex flex-wrap gap-2">
             {hit.tags.map((tag) => {
               return (
@@ -98,7 +98,7 @@ function CustomHit({ hit, lang }: { hit: ArticleHit; lang: Locale }) {
               )
             })}
           </div>
-        )}
+        )} */}
         <Highlight
           attribute="title"
           hit={hit}

@@ -4,6 +4,7 @@ import { hygraphArticleToCardProps } from "@/components/ArticleCard/ArticleCard"
 import { HeroArticleCard } from "@/components/ArticleCard/HeroArticleCard"
 import { HighlightedArticles } from "@/components/HighlightedArticles/HighlightedArticles"
 import { HighlightedCategoryArticles } from "@/components/HighlightedCategoryArticles/HighlightedCategoryArticles"
+import { RecentArticles } from "@/components/RecentArticles/RecentArticles"
 import { TrendingArticles } from "@/components/TrendingArticles/TrendingArticles"
 import { i18n, Locale } from "@/i18n/i18n"
 import { setTranslations } from "@/i18n/setTranslations"
@@ -28,7 +29,7 @@ export default async function Web({ params }: { params: { lang: Locale } }) {
 
   return (
     <>
-      <div className="mt-8 flex max-h-[500px] flex-col gap-[20px] border-b lg:flex-row">
+      <div className="mt-8 flex h-fit flex-col gap-[20px] border-b pb-12 md:max-h-[500px] lg:flex-row lg:pb-0">
         {homepage.heroArticle && (
           <>
             <HeroArticleCard article={hygraphArticleToCardProps(homepage.heroArticle)} asLink />
@@ -36,7 +37,8 @@ export default async function Web({ params }: { params: { lang: Locale } }) {
         )}
         <TrendingArticles title={homepage.trendingSectionTitle ?? "Trending articles"} />
       </div>
-      {homepage.highlightedArticles && (
+      <RecentArticles title={homepage.recentSectionTitle ?? "Recent articles"} />
+      {/* {homepage.highlightedArticles && (
         <HighlightedArticles
           title={homepage.highlightedSectionTitle ?? "Our picks"}
           articles={homepage.highlightedArticles}
@@ -47,7 +49,7 @@ export default async function Web({ params }: { params: { lang: Locale } }) {
           title={homepage.highlightedCategoryTitle ?? homepage.highlightedCategory.title}
           categoryId={homepage.highlightedCategory.id}
         />
-      )}
+      )} */}
     </>
   )
 }

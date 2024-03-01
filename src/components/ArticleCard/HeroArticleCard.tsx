@@ -30,7 +30,7 @@ export function HeroArticleCard({
 
   return (
     <div className="relative w-full overflow-hidden rounded-md text-white">
-      <div className="relative h-[224px] rounded-md bg-slate-900 md:h-[440px]">
+      <div className="relative h-[224px] rounded-md bg-slate-900 lg:h-[440px]">
         {imageUrl && (
           <Image
             src={imageUrl}

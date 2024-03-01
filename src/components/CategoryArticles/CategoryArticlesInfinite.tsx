@@ -50,7 +50,7 @@ export function RecentArticlesInfinite({ initialArticles, category }: CategoryAr
       <ArticlesGrid cardsOrientation="horizontal" className="md:grid-cols-1 lg:grid-cols-2" articles={articles} />
       {hasNextPage && (
         <Button
-          className="mt-16 w-full rounded-xl border p-4"
+          className="mt-16 w-full rounded-md border p-4"
           disabled={isFetchingNextPage}
           onClick={() => fetchNextPage()}
         >

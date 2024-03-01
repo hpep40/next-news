@@ -85,10 +85,10 @@ export function QuizLogic({ id }: QuizProps) {
     setCurrentQuestionIndex((prev) => prev - 1)
   }
 
-  if (isLoading || !data) return <Skeleton className="h-[20vh] w-full rounded-xl bg-custom-gray-200" />
+  if (isLoading || !data) return <Skeleton className="h-[20vh] w-full rounded-md bg-custom-gray-200" />
 
   return (
-    <div className="w-full flex-col items-center justify-center rounded-xl border-[1px] p-5">
+    <div className="w-full flex-col items-center justify-center rounded-md border-[1px] p-5">
       <div className="w-full items-center justify-center">
         <div className="mx-1 flex items-center justify-between pb-8">
           {currentQuestion?.content?.raw && (

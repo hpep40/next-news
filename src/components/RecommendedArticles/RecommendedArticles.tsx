@@ -19,8 +19,10 @@ export function RecommendedArticles({ id }: RecommendedArticlesProps) {
   if (!isLoading && recommendedArticles?.length === 0) return null
   return (
     <section className="w-full">
-      <h2 className="mb-4 scroll-m-20 text-3xl font-semibold tracking-tight">{translations.relatedArticles}</h2>
-      <div className={`grid gap-4 md:grid-cols-1`}>
+      {!isLoading && (
+        <h2 className="mb-4 scroll-m-20 text-3xl font-semibold tracking-tight">{translations.relatedArticles}</h2>
+      )}
+      <div className={`grid grid-cols-1 gap-4 md:grid-cols-2`}>
         {isLoading &&
           Array.from(Array(3).keys()).map((idx) => {
             return <ArticleSkeleton key={`skeleton-${idx}`} />
@@ -41,5 +43,5 @@ export function RecommendedArticles({ id }: RecommendedArticlesProps) {
 }
 
 function ArticleSkeleton() {
-  return <div className=" h-[481px] animate-pulse rounded-xl bg-gray-100"></div>
+  return <div className=" h-[481px] animate-pulse rounded-md bg-gray-100"></div>
 }

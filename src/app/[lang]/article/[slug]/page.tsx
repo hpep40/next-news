@@ -25,6 +25,8 @@ export async function generateMetadata({ params: { slug, lang } }: ArticlePagePr
 }
 
 export default async function Web({ params: { slug, lang } }: ArticlePageProps) {
+  // await new Promise((r) => setTimeout(r, 250000))
+
   const article = await getArticleBySlug({ locale: lang, slug })
   const articleUrl = `${env.NEXT_PUBLIC_SITE_URL}/article/${slug}`
   const initialQuiz = article?.content?.references[0]
@@ -59,10 +61,10 @@ export default async function Web({ params: { slug, lang } }: ArticlePageProps) 
               <RichText references={initialQuiz ? [initialQuiz] : []} raw={article.content.raw} />
             </section>
           )}
+          <RecommendedArticles id={article.id} />
         </div>
         <div className="hidden h-fit w-full max-w-[168px] flex-col gap-4 md:flex md:max-w-[368px]">
           <SubscribeNewsletter />
-          <RecommendedArticles id={article.id} />
         </div>
       </article>
     </>
