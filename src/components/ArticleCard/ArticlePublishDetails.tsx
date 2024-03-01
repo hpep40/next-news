@@ -96,21 +96,8 @@ export function RecentArticlePublishDetails({
             </>
           )}
           <p>{parsedDate}</p>
-          <p className="hidden md:inline">|</p>
         </>
       )}
-      <div className="mt-1 flex items-center gap-2 md:mt-0">
-        <p>{author}</p>
-        {imageUrl && (
-          <Image
-            src={imageUrl}
-            alt="author"
-            width={24}
-            height={24}
-            className="size-[24px] rounded-full border object-cover"
-          />
-        )}
-      </div>
     </div>
   )
 }
