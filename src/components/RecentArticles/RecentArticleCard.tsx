@@ -108,8 +108,8 @@ export function RecentArticleCard({
         >
           <div
             className={cn(
-              "flex flex-1 flex-col items-start gap-0 pt-0 md:justify-between md:gap-5 md:p-3 md:pt-2 lg:p-4 ",
-              isMain && "flex-col justify-between p-5 pt-2",
+              "flex flex-1 flex-col items-start gap-0 pt-0 md:p-3 md:pt-2 lg:p-4 ",
+              isMain && "flex-col justify-start p-5 pt-2",
               !mainTag && "lg:pt-4"
             )}
           >
@@ -118,7 +118,7 @@ export function RecentArticleCard({
                 lines === "1" && "md:line-clamp-1",
                 lines === "2" && "md:line-clamp-2",
                 lines === "3" && "md:line-clamp-3",
-                "mb-2 line-clamp-3 h-fit min-h-[40px] font-montserrat text-lg font-semibold md:font-bold md:leading-9 xl:py-2"
+                "mb-2 line-clamp-3 h-fit min-h-[40px] font-montserrat text-[16px] font-semibold md:font-bold md:leading-9 xl:py-2"
               )}
             >
               {title}

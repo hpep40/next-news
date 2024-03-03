@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useLocale } from "@/i18n/i18n"
-import { cn } from "@/utils/cn"
+import { cn } from "@/utils/cn" 
 import { formatDate } from "@/utils/formatDate"
 
 type ArticlePublishDetailsProps = {
@@ -81,7 +81,7 @@ export function RecentArticlePublishDetails({
       className={cn(
         variant === "dark" && " text-white",
         variant === "light" && " text-gray-500",
-        "flex w-full flex-col flex-wrap items-center gap-1 self-start whitespace-nowrap text-center text-sm md:flex-row-reverse md:gap-2",
+        "flex w-full flex-col flex-wrap items-start gap-1 self-start whitespace-nowrap text-start text-sm md:gap-2",
         className
       )}
     >
