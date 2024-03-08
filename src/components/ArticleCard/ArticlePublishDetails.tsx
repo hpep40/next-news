@@ -21,7 +21,13 @@ export function ArticlePublishDetails({
   variant = "dark",
   className = "",
 }: ArticlePublishDetailsProps) {
-  const locale = useLocale()
+    const locale = useLocale()
+  const parsedDate = new Date(publicationDate ?? "").toLocaleDateString(locale, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+
   return (
     <div
       className={cn(
@@ -41,7 +47,7 @@ export function ArticlePublishDetails({
               <p>|</p>
             </>
           )}
-          <p>{formatDate(publicationDate, locale)}</p>
+          <p>{parsedDate}</p>
           <p>|</p>
         </>
       )}

@@ -58,7 +58,7 @@ export default async function Web({ params: { slug, lang } }: ArticlePageProps) 
 
           {article.content && (
             <section className="flex w-full flex-col">
-              <RichText references={initialQuiz ? [initialQuiz] : []} raw={article.content.raw} />
+              <RichText references={initialQuiz ? [initialQuiz] : []}  raw={article.content.raw} />
             </section>
           )}
           <RecommendedArticles id={article.id} />

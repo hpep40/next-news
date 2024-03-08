@@ -59,13 +59,8 @@ export function RecentArticleCard({
   isMain = false,
   imageClassName,
 }: ArticleCardProps) {
-  const parsedDate = new Date(publicationDate ?? "").toLocaleDateString([], {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  })
-
   const locale = useLocale()
+  
   const mainTag = tags?.[0]
   return (
     <Link href={`/${locale}/article/${slug}`} hrefLang={locale} className="w-full">
