@@ -10,7 +10,7 @@ type RecentArticlesProps = {
 
 export async function RecentArticles({ title }: RecentArticlesProps) {
   const locale = useLocale()
-  const initialArticles = await getRecentArticles({ locale, first: 3, skip: 0 })
+  const initialArticles = await getRecentArticles({ locale, first: 4, skip: 0 })
 
   return (
     <section className="w-full">
