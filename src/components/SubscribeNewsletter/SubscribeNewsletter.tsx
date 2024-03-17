@@ -45,7 +45,7 @@ export function SubscribeNewsletter() {
         </h1>
       </div>
       <p className="font-source-sans-pro leading-7">
-        An articles of Bobzar main headlines from the Highlights will be emailed directly to you every week.
+        An articles of BobzaR main headlines from the Highlights will be emailed directly to you every week.
       </p>
       <form onSubmit={onSubmitHandler} className="mt-3 flex flex-col gap-2">
         <Input disabled={isLoading || isCompleted} type="email" required placeholder="Email Address" />

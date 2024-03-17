@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   const locale = params.lang ?? i18n.defaultLocale
   return {
     metadataBase: new URL("https://www.bobzar.com"),
-    title: "BobZar",
+    title: "BobzaR",
     openGraph: {
       url: env.NEXT_PUBLIC_SITE_URL,
       images: [
